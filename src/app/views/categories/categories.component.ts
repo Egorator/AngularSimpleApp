@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DataHandlerService} from "../../service/data-handler.service";
 import {Category} from "../../model/Category";
 
@@ -11,6 +11,8 @@ export class CategoriesComponent implements OnInit {
 
   categories: Category[];
 
+  selectedCategory: Category;
+
   constructor(private dataHandler: DataHandlerService) { }
 
   ngOnInit() {
@@ -18,7 +20,8 @@ export class CategoriesComponent implements OnInit {
   }
 
   showTasksByCategory(category: Category) {
-      this.dataHandler.fillTasksByCategory(category);
+    this.selectedCategory = category;
+    this.dataHandler.fillTasksByCategory(category);
   }
 
 }
